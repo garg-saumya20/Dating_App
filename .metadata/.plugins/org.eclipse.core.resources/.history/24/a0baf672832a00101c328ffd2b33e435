@@ -1,0 +1,35 @@
+package com.dating.bot.service;
+
+import java.time.LocalDateTime;
+
+import org.springframework.stereotype.Service;
+
+import com.dating.bot.entity.AiProfile;
+import com.dating.bot.entity.Match;
+import com.dating.bot.repository.AiProfileRepository;
+import com.dating.bot.repository.MatchRepository;
+
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class MatchService {
+	
+	private final MatchRepository matchRepository;
+    private final AiProfileRepository aiProfileRepository;
+
+    public Match createMatch(Long aiProfileId, Long userId) {
+        AiProfile aiProfile = aiProfileRepository.findById(aiProfileId)
+                .orElseThrow(() -> new RuntimeException("Profile not found"));
+
+        Match match = Match.builder()
+                .userId(userId)
+                .aiProfile(aiProfile)
+                .matchedAt(LocalDateTime.now())
+                .build();
+
+        return matchRepository.save(match);
+    }
+
+}

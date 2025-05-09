@@ -1,0 +1,10 @@
+package com.dating.bot.conversations;
+
+import java.time.LocalDateTime;
+
+public class ChatMessage {
+
+	String messageText;
+	String authorId;
+	LocalDateTime messageTime;
+}

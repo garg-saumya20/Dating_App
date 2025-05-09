@@ -1,0 +1,16 @@
+package com.dating.bot.profiles;
+
+public class Profiles {
+
+	String id;
+	String firstName;
+	String lastName;
+	int age;
+	String ethnicity;
+	Gender gender;
+	String bio;
+	String imageUrl;
+	String myersBriggsPersonalityType;
+	
+	
+}

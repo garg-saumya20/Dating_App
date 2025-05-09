@@ -1,0 +1,30 @@
+package com.dating.bot;
+
+import com.dating.bot.conversations.*;
+import com.dating.bot.profiles.*;
+import com.dating.bot.repository.ConversationRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@SpringBootApplication
+public class TinderAiApplication  {
+
+    @Autowired
+    private ProfilesRepository profilesRepository;
+
+    @Autowired
+    private ConversationRepository conversationRepository;
+
+    public static void main(String[] args) {
+        SpringApplication.run(TinderAiApplication.class, args);
+        System.out.println("Server started");
+    }
+
+    
+}

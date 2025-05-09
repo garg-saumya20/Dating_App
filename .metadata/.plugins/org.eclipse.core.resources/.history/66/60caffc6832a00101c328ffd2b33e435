@@ -1,0 +1,5 @@
+package com.dating.bot.entity;
+
+public class ChatMessage {
+
+}

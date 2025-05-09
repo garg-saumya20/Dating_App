@@ -1,0 +1,5 @@
+package com.dating.bot.service;
+
+public class ChatService {
+
+}

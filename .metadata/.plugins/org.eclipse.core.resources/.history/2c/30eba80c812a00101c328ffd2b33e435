@@ -1,0 +1,49 @@
+package com.dating.bot.service;
+
+import java.util.Random;
+
+import org.springframework.stereotype.Service;
+
+import com.dating.bot.profiles.AiProfile;
+import com.dating.bot.profiles.Gender;
+import com.dating.bot.repository.AiProfileRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class AiProfileService {
+
+	
+	    private final AiProfileRepository repository;
+
+	    public AiProfile generateRandomProfile() {
+	        // Replace these with OpenAI/Ollama + Stable Diffusion later
+	        String[] firstNames = {"Ava", "Liam", "Mia", "Noah", "Zoe"};
+	        String[] lastNames = {"Smith", "Lee", "Patel", "Garcia"};
+	        String[] ethnicities = {"Asian", "Caucasian", "Hispanic", "African"};
+	        String[] mbtiTypes = {"INTJ", "ENFP", "ISTP", "INFJ"};
+	        String[] bios = {
+	            "I love hiking and exploring new places.",
+	            "Coffee addict and book lover.",
+	            "Sarcastic but lovable. Swipe right and find out!"
+	        };
+
+	        Random random = new Random();
+
+	        AiProfile profile = AiProfile.builder()
+	                .firstName(firstNames[random.nextInt(firstNames.length)])
+	                .lastName(lastNames[random.nextInt(lastNames.length)])
+	                .age(18 + random.nextInt(10))
+	                .ethnicity(ethnicities[random.nextInt(ethnicities.length)])
+	                .gender(Gender.values()[random.nextInt(Gender.values().length)])
+	                .bio(bios[random.nextInt(bios.length)])
+	                .imageUrl("https://dummyimage.com/300x300/aaa/fff") // placeholder for now
+	                .myersBriggsPersonalityType(mbtiTypes[random.nextInt(mbtiTypes.length)])
+	                .build();
+
+	        return repository.save(profile);
+	    }
+	}
+
+

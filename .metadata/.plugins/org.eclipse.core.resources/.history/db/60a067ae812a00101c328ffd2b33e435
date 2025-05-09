@@ -1,0 +1,5 @@
+package com.dating.bot.repository;
+
+public interface MatchRepository {
+
+}

@@ -1,0 +1,100 @@
+package com.dating.bot.ollama;
+
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.*;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+
+import com.dating.bot.entity.AiProfile;
+
+import java.util.List;
+
+@Slf4j
+@Component
+public class OllamaClient {
+
+    private final String OLLAMA_URL = "http://localhost:11434/v1/chat/completions";
+
+    public String generateReply(AiProfile profile, String userMessage) {
+        RestTemplate restTemplate = new RestTemplate();
+
+        MessagePayload payload = new MessagePayload();
+        payload.setModel("tinydolphin");
+        
+        String systemPrompt = "You are playing the role of '" + profile.getFirstName() + "', a confident, cheeky, and flirty personality on a dating app. " +
+        	    "You are talking to a potential match named Saumya. " +
+        	    "Respond in 1 to 3 short, playful sentences. Be emotionally expressive, use humor or light teasing, and sprinkle in an occasional emoji. " +
+        	    "NEVER ask too many questions at once. Avoid sounding formal or like an interviewer. " +
+        	    "Do NOT refer to yourself by name unless explicitly asked.";
+
+
+       
+
+				payload.setMessages(List.of(
+				new Message("system", systemPrompt),
+				new Message("user", userMessage)
+				));
+
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<MessagePayload> request = new HttpEntity<>(payload, headers);
+
+        try {
+            ResponseEntity<OllamaResponse> response = restTemplate.exchange(
+                OLLAMA_URL,
+                HttpMethod.POST,
+                request,
+                OllamaResponse.class
+            );
+
+            OllamaResponse body = response.getBody();
+           // log.info("🧠 Ollama full response: {}", body);
+
+            if (body != null && body.getChoices() != null && !body.getChoices().isEmpty()) {
+                return body.getChoices().get(0).getMessage().getContent();
+            }
+
+            return "Sorry, I’m a bit shy right now!";
+        } catch (Exception e) {
+            log.error("❌ Error calling Ollama: ", e);
+            return "Oops! Something went wrong with my brain.";
+        }
+    }
+
+    @Data
+    static class MessagePayload {
+        private String model;
+        private boolean stream = false;
+        private List<Message> messages;
+    }
+
+    @Data
+    static class Message {
+        private String role;
+        private String content;
+
+        public Message(String role, String content) {
+            this.role = role;
+            this.content = content;
+        }
+    }
+
+    @Data
+    static class OllamaResponse {
+        private List<Choice> choices;
+
+        @Data
+        static class Choice {
+            private MessageContent message;
+        }
+
+        @Data
+        static class MessageContent {
+            private String role;
+            private String content;
+        }
+    }
+}

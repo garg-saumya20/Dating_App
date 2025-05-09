@@ -1,0 +1,8 @@
+package com.dating.bot.profiles;
+
+public enum Gender {
+	MALE,
+	FEMALE,
+	NON_BINARY
+
+}

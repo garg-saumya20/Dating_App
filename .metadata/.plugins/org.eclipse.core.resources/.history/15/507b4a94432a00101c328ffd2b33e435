@@ -1,0 +1,9 @@
+package com.dating.bot.conversations;
+
+public class Conversation {
+	
+	String id;
+	String profileId;
+	List<ChatMessage> messages;
+
+}

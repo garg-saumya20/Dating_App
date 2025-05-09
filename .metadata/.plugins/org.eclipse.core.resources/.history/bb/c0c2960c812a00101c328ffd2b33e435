@@ -1,0 +1,19 @@
+package com.dating.bot.controller;
+
+import com.dating.bot.profiles.AiProfile;
+import com.dating.bot.service.AiProfileService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/profiles")
+@RequiredArgsConstructor
+public class AiProfileController {
+
+    private final AiProfileService profileService;
+
+    @PostMapping("/generate")
+    public AiProfile generateProfile() {
+        return profileService.generateRandomProfile();
+    }
+}

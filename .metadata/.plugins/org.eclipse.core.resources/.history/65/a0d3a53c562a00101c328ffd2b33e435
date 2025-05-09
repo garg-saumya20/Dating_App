@@ -1,0 +1,11 @@
+package com.dating.bot.profiles;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.dating.bot.profiles.Profiles;
+
+@Repository
+public interface ProfilesRepository extends JpaRepository<Profiles, String> {
+
+}

@@ -1,0 +1,10 @@
+spring.application.name=Tinder_AI
+
+# Data Source properties
+spring.datasource.url=jdbc:mysql://localhost:3306/tinder_ai
+spring.datasource.username=root
+spring.datasource.password=agile@123
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Open-Ai key
+spring.ai.openai.api-key=${SPRING_AI_OPENAI_API_KEY}

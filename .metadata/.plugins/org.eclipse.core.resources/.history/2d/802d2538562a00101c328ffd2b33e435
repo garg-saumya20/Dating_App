@@ -1,0 +1,10 @@
+package com.dating.bot.conversations;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.dating.bot.conversations.Conversation;
+
+public interface ConversationRepository extends JpaRepository<Conversation, String>{
+	
+
+}

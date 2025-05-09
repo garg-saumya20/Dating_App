@@ -1,0 +1,22 @@
+package com.dating.bot.conversations;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class ChatMessage {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+
+    private String messageText;
+    private String authorId;
+    private LocalDateTime messageTime;
+}

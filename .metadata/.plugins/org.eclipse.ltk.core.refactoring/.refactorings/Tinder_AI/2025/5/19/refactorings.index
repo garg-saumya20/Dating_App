@@ -1,0 +1,17 @@
+1746521024629	Move compilation unit
+1746521032168	Move compilation unit
+1746537852606	Rename type 'Profiles'
+1746537930256	Rename type 'ProfilesRepository'
+1746538003876	Delete element
+1746538147960	Rename type 'ConversationController'
+1746538235375	Delete element
+1746539420216	Rename package 'com.dating.bot.profiles'
+1746540400911	Rename compilation unit 'Match.java'
+1746546167185	Rename type 'OpenAiClient'
+1746610598938	Rename type 'LLMClient'
+1746610623434	Rename package 'com.dating.bot.openAI'
+1746614691798	Move package
+1746614825557	Move 'com' to 'com'
+1746614841881	Rename package 'com.com.dating.bot.ollama'
+1746614914388	Delete element
+1746614990108	Rename compilation unit 'OllamaCLient.java'

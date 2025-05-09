@@ -1,0 +1,39 @@
+package com.dating.bot.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dating.bot.entity.ChatMessage;
+import com.dating.bot.service.ChatService;
+
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/api/chat")
+@RequiredArgsConstructor
+public class ChatController {
+
+	private final ChatService chatService;
+
+    @GetMapping("/{profileId}")
+    public List<ChatMessage> getChat(@PathVariable Long profileId) {
+        return chatService.getChatHistory(profileId);
+    }
+
+    @PostMapping("/{profileId}")
+    public ChatMessage sendMessage(@PathVariable Long profileId, @RequestBody MessageDTO userMessage) {
+        return chatService.sendUserMessage(profileId, userMessage.getMessage() );
+    }
+
+    @Data
+    public static class MessageDTO {
+        private String message;
+    }
+}

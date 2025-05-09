@@ -1,0 +1,5 @@
+package com.dating.bot.controller;
+
+public class ChatController {
+
+}

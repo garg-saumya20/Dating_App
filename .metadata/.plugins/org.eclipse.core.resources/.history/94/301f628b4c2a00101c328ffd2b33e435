@@ -1,0 +1,67 @@
+package com.dating.bot;
+
+import com.dating.bot.conversations.*;
+import com.dating.bot.profiles.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@SpringBootApplication
+public class TinderAiApplication implements CommandLineRunner {
+
+    @Autowired
+    private ProfilesRepository profilesRepository;
+
+    @Autowired
+    private ConversationRepository conversationRepository;
+
+    public static void main(String[] args) {
+        SpringApplication.run(DatingBotApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) {
+        // Save a profile
+        Profiles profile = Profiles.builder()
+                .id("user123")
+                .firstName("John")
+                .lastName("Doe")
+                .age(30)
+                .ethnicity("Asian")
+                .gender(Profiles.Gender.MALE)
+                .bio("Love hiking and books.")
+                .imageUrl("http://example.com/john.jpg")
+                .myersBriggsPersonalityType("INTJ")
+                .build();
+
+        profilesRepository.save(profile);
+
+        // Save chat messages
+        ChatMessage msg1 = ChatMessage.builder()
+                .messageText("Hey there!")
+                .authorId("user123")
+                .messageTime(LocalDateTime.now())
+                .build();
+
+        ChatMessage msg2 = ChatMessage.builder()
+                .messageText("Hi, what's up?")
+                .authorId("user456")
+                .messageTime(LocalDateTime.now())
+                .build();
+
+        // Save conversation
+        Conversation conversation = Conversation.builder()
+                .profileId("user123")
+                .messages(List.of(msg1, msg2))
+                .build();
+
+        conversationRepository.save(conversation);
+
+        System.out.println("✅ Profile and Conversation saved successfully!");
+    }
+}
