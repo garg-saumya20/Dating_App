@@ -118,7 +118,7 @@ export default function ConversationPage() {
               <div className="message-content">
                 <strong>{msg.sender === 'USER' ? 'You' : `${profile.firstName} ${profile.lastName}`}:</strong>
                 <p>{msg.message}</p>
-                <small>{formatDate(msg.sentAt)}</small>
+                <small style={{ color: '#000' }}>{formatDate(msg.sentAt)}</small>
               </div>
             </div>
           ))

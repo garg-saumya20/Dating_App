@@ -27,10 +27,11 @@ const SwipeRightPage = () => {
     <Paper sx={{ 
       padding: 4, 
       backgroundColor: '#f0f4f8', 
-      background: 'linear-gradient(135deg, #f0f4f8 0%, #d0e2f2 100%)', 
+      // background: 'linear-gradient(135deg, #f0f4f8 0%, #d0e2f2 100%)', 
+       background: 'linear-gradient(135deg,#ffafbd 0%, #ffc3a0 100%)',
       minHeight: '100vh' 
     }}>
-      <Typography variant="h4" gutterBottom align="center" sx={{ color: '#1976d2', fontWeight: 'bold' }}>
+      <Typography variant="h4" gutterBottom align="center" sx={{  color: '#fff', fontWeight: 'bold' }}>
         Matched Profiles
       </Typography>
       <Grid container spacing={4} justifyContent="center">
@@ -51,7 +52,7 @@ const SwipeRightPage = () => {
                   width: 120, 
                   height: 120, 
                   margin: 'auto', 
-                  border: '4px solid #1976d2', 
+                  border: '5px solid #ff1744',
                   marginBottom: 2 
                 }} 
               />
@@ -64,9 +65,18 @@ const SwipeRightPage = () => {
                 <Button 
                   onClick={() => handleCardClick(profile.id)} 
                   variant="contained" 
-                  color="primary" 
+                  color="#FFBBAC" 
                   fullWidth
-                  sx={{ marginTop: 2, padding: '10px', textTransform: 'none' }}
+                  sx={{ 
+                    marginTop: 2, 
+                    padding: '10px', 
+                    textTransform: 'none',
+                    backgroundColor: '#FFBBAC',
+                    color: '#000', // optional: change text color to black for better contrast
+                    '&:hover': {
+                      backgroundColor: '#ff9d89', // darker shade on hover
+                    },
+                  }}
                 >
                   Start Conversation
                 </Button>

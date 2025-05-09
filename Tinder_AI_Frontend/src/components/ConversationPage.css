@@ -2,7 +2,7 @@
 
 /* Main chat container */
 .chat-container {
-  background: #f5f5f5;
+  background: #FFBBAC;
   min-height: 100vh; /* Ensure it takes full height of the screen */
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@
 
 .profile-bio {
   font-size: 1.1rem;
-  color: #777;
+  color: blue;
   text-align: center;
   font-style: italic;
   max-width: 400px;
@@ -88,13 +88,13 @@
 }
 
 .message.user {
-  background: #4caf50;
+  background: #6ab16d;
   align-self: flex-end;
   color: white;
 }
 
 .message.ai {
-  background: #2196f3;
+  background: #5797cc;
   align-self: flex-start;
   color: white;
 }
@@ -104,6 +104,7 @@
   font-size: 1rem;
   line-height: 1.4;
 }
+
 
 .message strong {
   font-weight: bold;
