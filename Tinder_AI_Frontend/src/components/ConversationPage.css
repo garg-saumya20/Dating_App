@@ -1,201 +1,159 @@
-/* src/components/ConversationPage.css
-.chat-container {
-    width: 60%;
-    margin: auto;
-    font-family: Arial, sans-serif;
-  }
-  
-  h2 {
-    color: #222;
-  }
-  
-  .profile-img {
-    width: 150px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  .chat-box {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 15px;
-    height: 300px;
-    overflow-y: auto;
-    background: #f9f9f9;
-  }
-  
-  .input-box {
-    margin-top: 10px;
-  }
-  
-  .input-box input {
-    padding: 8px;
-    width: 80%;
-    font-size: 14px;
-  }
-  
-  .input-box button {
-    padding: 8px 16px;
-    margin-left: 5px;
-    background: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .input-box button:hover {
-    background: #0056b3;
-  }
-  
-  .error-text {
-    color: red;
-    font-weight: bold;
-  }
-   */
+/* ConversationPage.css */
 
-   /* General Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f8f8;
-  }
-  
-  .chat-container {
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    height: 80vh;
-  }
-  
-  /* Profile Header */
-  .profile-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .profile-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-  
-  .profile-bio {
-    font-size: 14px;
-    color: #666;
-    max-width: 400px;
-  }
-  
-  /* Chat Box */
-  .chat-box {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding-right: 10px;
-  }
-  
-  .message {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: flex-start;
-  }
-  
-  .message .message-content {
-    max-width: 70%;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #f1f1f1;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .message.ai .message-content {
-    background-color: #e0e0e0;
-  }
-  
-  .message.user .message-content {
-    background-color: #a3d3ff;
-    margin-left: auto;
-  }
-  
-  /* Message Date */
-  small {
-    display: block;
-    margin-top: 5px;
-    font-size: 12px;
-    color: #888;
-  }
-  
-  /* Input Box */
-  .input-box {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  input {
-    width: 80%;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-  }
-  
-  button.send-btn {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button.send-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Error message */
-  .error-text {
-    color: red;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 600px) {
-    .chat-container {
-      margin: 10px;
-      padding: 15px;
-    }
-  
-    .profile-header {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .chat-box {
-      padding-right: 5px;
-    }
-  
-    input {
-      width: 70%;
-    }
-  
-    button.send-btn {
-      width: 25%;
-    }
-  }
-  
+/* Main chat container */
+.chat-container {
+  background: #f5f5f5;
+  min-height: 100vh; /* Ensure it takes full height of the screen */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Start from the top */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in height */
+  overflow: hidden; /* Prevent the entire page from scrolling */
+}
+
+/* Title */
+.chat-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Profile header */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profile-bio {
+  font-size: 1.1rem;
+  color: #777;
+  text-align: center;
+  font-style: italic;
+  max-width: 400px;
+}
+
+/* Chat box (Scrollable) */
+.chat-box {
+  width: 100%;
+  max-width: 600px;
+  flex-grow: 1; /* Allow it to expand and fill the remaining space */
+  height: 400px; /* Fixed height */
+  overflow-y: auto; /* Only chat box scrollable */
+  padding: 10px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Scrollbar styling */
+.chat-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Chat message bubbles */
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message.user {
+  background: #4caf50;
+  align-self: flex-end;
+  color: white;
+}
+
+.message.ai {
+  background: #2196f3;
+  align-self: flex-start;
+  color: white;
+}
+
+/* Message content */
+.message-content {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.message strong {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.message small {
+  font-size: 0.8rem;
+  color: #bbb;
+  margin-top: 5px;
+}
+
+/* Input box styling */
+.input-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-box input {
+  width: 85%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+}
+
+.input-box input:focus {
+  border-color: #4caf50;
+}
+
+.input-box button {
+  width: 12%;
+  padding: 12px;
+  margin-left: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #4caf50;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.input-box button:hover {
+  background: #388e3c;
+}

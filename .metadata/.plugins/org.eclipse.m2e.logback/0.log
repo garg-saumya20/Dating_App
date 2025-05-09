@@ -1004,3 +1004,4 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.springfra
 2025-05-08 14:59:07,733 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-05-08 14:59:07,813 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 340 resources from src\main\resources to target\classes
 2025-05-08 14:59:07,931 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Resume_Projects\Tinder_AI_Project\Tinder_AI\src\test\resources
+2025-05-09 17:41:29,998 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
